@@ -6,6 +6,7 @@ import com.panda.pauloartdraw.market.persistence.crud.ProductCrudRepository;
 import com.panda.pauloartdraw.market.persistence.entity.Product;
 import com.panda.pauloartdraw.market.persistence.mapper.ProductMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

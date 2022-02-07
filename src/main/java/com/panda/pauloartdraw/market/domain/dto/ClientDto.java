@@ -1,13 +1,9 @@
-package com.panda.pauloartdraw.market.persistence.entity;
+package com.panda.pauloartdraw.market.domain.dto;
 
-import javax.persistence.*;
 import java.util.List;
 
-@Entity
-@Table(name = "clients")
-public class Client {
+public class ClientDto {
 
-    @Id
     private String id;
 
     private String firstname;
@@ -22,15 +18,11 @@ public class Client {
 
     private String password;
 
-    @Column(name = "rol_id")
-    private Integer rolId;
+    private int rolId;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "client")
-    private List<Invoice> invoices;
+    private RolDto rol;
 
-    @ManyToOne
-    @JoinColumn(name = "rol_id", insertable = false, updatable = false)
-    private Rol rol;
+    private List<InvoiceDto> invoices;
 
     public String getId() {
         return id;
@@ -80,14 +72,6 @@ public class Client {
         this.email = email;
     }
 
-    public List<Invoice> getInvoices() {
-        return invoices;
-    }
-
-    public void setInvoices(List<Invoice> invoices) {
-        this.invoices = invoices;
-    }
-
     public String getPassword() {
         return password;
     }
@@ -96,19 +80,27 @@ public class Client {
         this.password = password;
     }
 
-    public Integer getRolId() {
+    public int getRolId() {
         return rolId;
     }
 
-    public void setRolId(Integer rolId) {
+    public void setRolId(int rolId) {
         this.rolId = rolId;
     }
 
-    public Rol getRol() {
+    public RolDto getRol() {
         return rol;
     }
 
-    public void setRol(Rol rol) {
+    public void setRol(RolDto rol) {
         this.rol = rol;
+    }
+
+    public List<InvoiceDto> getInvoices() {
+        return invoices;
+    }
+
+    public void setInvoices(List<InvoiceDto> invoices) {
+        this.invoices = invoices;
     }
 }

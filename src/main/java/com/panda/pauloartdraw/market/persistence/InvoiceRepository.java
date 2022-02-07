@@ -6,6 +6,7 @@ import com.panda.pauloartdraw.market.persistence.crud.InvoiceCrudRepository;
 import com.panda.pauloartdraw.market.persistence.entity.Invoice;
 import com.panda.pauloartdraw.market.persistence.mapper.InvoiceMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
