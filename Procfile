@@ -1,1 +1,1 @@
-web: java -jar -Dspring.profiles.active=prod build/libs/pauloartdraw-market-1.0
+web: java -jar -Dspring.profiles.active=prod build/libs/pauloartdraw-market-1.0.jar
