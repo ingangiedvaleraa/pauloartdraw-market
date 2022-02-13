@@ -1,6 +1,7 @@
 package com.panda.pauloartdraw.market.web.security;
 
 import com.panda.pauloartdraw.market.domain.service.ClientService;
+import com.panda.pauloartdraw.market.web.security.filter.JwtFilterRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -9,7 +10,9 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -17,6 +20,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private ClientService clientService;
+
+    @Autowired
+    private JwtFilterRequest jwtFilterRequest;
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
@@ -35,7 +41,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/**/login").permitAll()
                 .antMatchers("/**/register").permitAll()
-                .anyRequest().authenticated();
+                .anyRequest().authenticated().and().sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+
+        http.addFilterBefore(jwtFilterRequest, UsernamePasswordAuthenticationFilter.class);
     }
 
     @Override
