@@ -20,5 +20,6 @@ public interface ClientMapper {
     List<ClientDto> toDomainClients(List<Client> clients);
 
     @InheritInverseConfiguration
+    @Mapping(target = "invoices", ignore = true)
     Client toClient(ClientDto client);
 }

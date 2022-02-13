@@ -19,6 +19,7 @@ public interface InvoiceMapper {
             @Mapping(source = "id", target = "id"),
             @Mapping(source = "invoiceDate", target = "date"),
             @Mapping(source = "products", target = "products"),
+            @Mapping(source = "comments", target = "comment"),
     })
     InvoiceDto toInvoiceDto(Invoice invoice);
     List<InvoiceDto> toInvoicesDto(List<Invoice> invoices);
