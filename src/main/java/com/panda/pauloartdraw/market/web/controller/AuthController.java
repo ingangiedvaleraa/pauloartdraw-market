@@ -28,33 +28,16 @@ public class AuthController {
     private static Logger LOG = LoggerFactory.getLogger(AuthController.class);
 
     @Autowired
-    private AuthenticationManager authenticationManager;
-
-    @Autowired
     private AuthService authService;
-
-    @Autowired
-    private ClientService clientService;
-
-    @Autowired
-    private JWTUtil jwtUtil;
 
     @PostMapping("/login")
     public ResponseEntity<AuthenticationResponseDto> createToken(@RequestBody AuthenticationRequestDto request) {
-        try {
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
-            UserDetails userDetails = clientService.loadUserByUsername(request.getEmail());
-            String jwt = jwtUtil.generateToken(userDetails);
-            return new ResponseEntity<>(new AuthenticationResponseDto(jwt), HttpStatus.OK);
-        } catch (BadCredentialsException e) {
-            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
-        }
-
+        return authService.createToken(request);
     }
 
     @PostMapping("/register")
     public ResponseEntity<ClientDto> save(@RequestBody ClientDto client) {
-        return new ResponseEntity<>(authService.save(client), HttpStatus.CREATED);
+        return new ResponseEntity<>(authService.saveAndFlush(client), HttpStatus.CREATED);
     }
 
 }

@@ -14,6 +14,7 @@ public interface ClientMapper {
 
     @Mappings({
             @Mapping(source = "rolId", target = "rolId"),
+            @Mapping(source = "rol", target = "rol"),
     })
     ClientDto toDomainClient(Client client);
     List<ClientDto> toDomainClients(List<Client> clients);

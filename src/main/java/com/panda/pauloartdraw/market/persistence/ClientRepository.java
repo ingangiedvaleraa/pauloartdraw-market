@@ -51,6 +51,12 @@ public class ClientRepository implements DomainClientRepository {
     }
 
     @Override
+    public ClientDto saveAndFlush(ClientDto client) {
+        Client client1 = mapper.toClient(client);
+        return mapper.toDomainClient(clientRepo.saveAndFlush(client1));
+    }
+
+    @Override
     public void delete(int id) {
         clientRepo.deleteById(id);
     }

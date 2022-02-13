@@ -17,5 +17,7 @@ public interface DomainClientRepository {
 
     ClientDto save(ClientDto client);
 
+    ClientDto saveAndFlush(ClientDto client);
+
     void delete(int id);
 }
