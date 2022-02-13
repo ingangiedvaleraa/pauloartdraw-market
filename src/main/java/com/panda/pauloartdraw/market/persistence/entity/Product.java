@@ -18,6 +18,8 @@ public class Product {
 
     private String code;
 
+    private String image;
+
     private Double price;
 
     private Integer stock;
@@ -96,6 +98,13 @@ public class Product {
         this.category = category;
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 //    public List<InvoicesProduct> getInvoices() {
 //        return invoices;
 //    }

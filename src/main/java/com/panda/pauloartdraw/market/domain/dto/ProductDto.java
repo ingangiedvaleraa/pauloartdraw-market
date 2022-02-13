@@ -6,6 +6,8 @@ public class ProductDto {
 
     private String name;
 
+    private String image;
+
     private int categoryId;
 
     private double price;
@@ -74,7 +76,15 @@ public class ProductDto {
         this.category = category;
     }
 
-//    public List<DomainInvoice> getInvoices() {
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    //    public List<DomainInvoice> getInvoices() {
 //        return invoices;
 //    }
 //
