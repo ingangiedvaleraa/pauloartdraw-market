@@ -20,6 +20,7 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
+    @CrossOrigin(origins = "http://localhost:3005")
     @GetMapping("/all")
     public ResponseEntity<List<ProductDto>> getAll() {
         return new ResponseEntity<>(productService.getAll(), HttpStatus.OK);
