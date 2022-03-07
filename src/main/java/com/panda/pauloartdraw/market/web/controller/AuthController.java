@@ -19,6 +19,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST, })
 @RequestMapping("/auth")
 public class AuthController {
 
@@ -27,13 +28,11 @@ public class AuthController {
     @Autowired
     private AuthService authService;
 
-    @CrossOrigin(origins = "http://localhost:3005")
     @PostMapping("/login")
     public ResponseEntity<AuthenticationResponseDto> createToken(@RequestBody AuthenticationRequestDto request) {
         return authService.createToken(request);
     }
 
-    @CrossOrigin(origins = "http://localhost:3005")
     @PostMapping("/register")
     public ResponseEntity<ClientDto> save(@RequestBody ClientDto client) {
         return new ResponseEntity<>(authService.saveAndFlush(client), HttpStatus.CREATED);
