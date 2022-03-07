@@ -20,6 +20,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class AuthService {
 
@@ -45,8 +47,9 @@ public class AuthService {
         try {
             UserDetails userDetails = clientService.loadUserByUsername(request.getEmail());
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
-            String jwt = jwtUtil.generateToken(userDetails);
-            return new ResponseEntity<>(new AuthenticationResponseDto(jwt), HttpStatus.OK);
+            String token = jwtUtil.generateToken(userDetails);
+            String rol = token != null ? String.valueOf(userDetails.getAuthorities()) : null;
+            return new ResponseEntity<>(new AuthenticationResponseDto(token, rol), HttpStatus.OK);
         } catch (BadCredentialsException e) {
             return new ResponseEntity<>(HttpStatus.FORBIDDEN);
         } catch (UsernameNotFoundException e) {

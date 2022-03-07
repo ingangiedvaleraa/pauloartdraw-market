@@ -14,9 +14,10 @@ public class JWTUtil {
     private static final String KEY = "pl4tz1-p4u|0w3b4rt";
 
     public String generateToken(UserDetails userDetails){
-        return Jwts.builder().setSubject(userDetails.getUsername()).setIssuedAt(new Date())
+        String token = Jwts.builder().setSubject(userDetails.getUsername()).setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 *10))
                 .signWith(SignatureAlgorithm.HS256, KEY).compact();
+        return token;
     }
 
     public boolean validateToken(String token, UserDetails userDetails) {

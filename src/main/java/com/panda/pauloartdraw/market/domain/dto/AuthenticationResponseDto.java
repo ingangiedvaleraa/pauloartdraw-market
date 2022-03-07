@@ -2,17 +2,31 @@ package com.panda.pauloartdraw.market.domain.dto;
 
 public class AuthenticationResponseDto {
 
-    private String jwt;
+    private String token;
+    private String rol;
 
-    public AuthenticationResponseDto(String jwt) {
-        this.jwt = jwt;
+    public AuthenticationResponseDto(String token, String rol) {
+        this.token = token;
+        this.rol = rol;
     }
 
-    public String getJwt() {
-        return jwt;
+    public AuthenticationResponseDto(String token) {
+        this.token = token;
     }
 
-    public void setJwt(String jwt) {
-        this.jwt = jwt;
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
     }
 }
