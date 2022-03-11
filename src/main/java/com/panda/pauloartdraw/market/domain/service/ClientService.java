@@ -35,4 +35,8 @@ public class ClientService implements UserDetailsService {
         UserDetails userDetails = new User(client.get().getEmail(), client.get().getPassword(), roles);
         return userDetails;
     }
+
+    public List<ClientDto> getAll() {
+        return clientRepo.getAll();
+    }
 }
