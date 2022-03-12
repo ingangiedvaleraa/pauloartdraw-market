@@ -1,10 +1,13 @@
 package com.panda.pauloartdraw.market.domain.dto;
+import com.panda.pauloartdraw.market.persistence.entity.Product;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CategoryDto {
     private int id;
     private String name;
     private boolean active;
-//    private DomainProduct products;
 
     public int getId() {
         return id;
@@ -29,12 +32,5 @@ public class CategoryDto {
     public void setActive(boolean active) {
         this.active = active;
     }
-//
-//    public DomainProduct getProducts() {
-//        return products;
-//    }
-//
-//    public void setProducts(DomainProduct products) {
-//        this.products = products;
-//    }
+
 }

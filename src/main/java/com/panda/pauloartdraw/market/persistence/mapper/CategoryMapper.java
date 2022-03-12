@@ -14,14 +14,14 @@ import java.util.List;
 @Mapper(componentModel = "spring", uses = {ProductMapper.class})
 public interface CategoryMapper {
     @Mappings({
+            @Mapping(source = "id", target = "id"),
             @Mapping(source = "description", target = "name"),
             @Mapping(source = "state", target = "active"),
-//            @Mapping(source = "products", target = "products")
     })
     CategoryDto toDomainCategory(Category category);
     List<CategoryDto> toDomainCategories(List<Category> categories);
 
     @InheritInverseConfiguration
-    @Mapping(target = "products", ignore = true)
+//    @Mapping(target = "products", ignore = true)
     Category toCategory(CategoryDto category);
 }
