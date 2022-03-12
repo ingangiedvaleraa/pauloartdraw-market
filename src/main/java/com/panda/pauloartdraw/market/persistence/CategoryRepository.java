@@ -6,9 +6,11 @@ import com.panda.pauloartdraw.market.persistence.crud.CategoryCrudRepository;
 import com.panda.pauloartdraw.market.persistence.entity.Category;
 import com.panda.pauloartdraw.market.persistence.mapper.CategoryMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public class CategoryRepository implements DomainCategoryRepository {
 
     @Autowired
