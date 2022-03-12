@@ -6,7 +6,11 @@ import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
+import org.springframework.stereotype.Component;
 
+import java.util.List;
+
+@Component
 @Mapper(componentModel = "spring", uses = {ProductMapper.class})
 public interface CategoryMapper {
     @Mappings({
@@ -15,6 +19,7 @@ public interface CategoryMapper {
 //            @Mapping(source = "products", target = "products")
     })
     CategoryDto toDomainCategory(Category category);
+    List<CategoryDto> toDomainCategories(List<Category> categories);
 
     @InheritInverseConfiguration
     @Mapping(target = "products", ignore = true)
